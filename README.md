@@ -1,2 +1,2 @@
-# process-scheduling-simulator
-A simple process scheduling simulator
+# page-replacement-simulator
+A simple page replacement simulator
