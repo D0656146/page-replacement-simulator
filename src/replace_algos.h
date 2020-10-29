@@ -11,13 +11,18 @@
 #include "replace_utils.h"
 #include "simulator.h"
 
-SimulateResult* FirstInFirstOut_MA(PRSimulator* simulator, MemoryReferences* references);
+SimulateResult* FirstInFirstOut_MA(PRSimulator* simulator,
+                                   const MemoryReferences* references);
 
 SimulateResult* AdditionalReferenceBits_MA(PRSimulator* simulator,
-                                           MemoryReferences* references,
-                                           int num_arbits,
-                                           int interrupt_period);
+                                           const MemoryReferences* references,
+                                           const int num_arbits,
+                                           const int interrupt_period);
 
-SimulateResult* EnhancedSecondChance_MA(PRSimulator* simulator, MemoryReferences* references);
+SimulateResult* EnhancedSecondChance_MA(PRSimulator* simulator,
+                                        const MemoryReferences* references);
+
+SimulateResult* Farest_MA(PRSimulator* simulator,
+                          const MemoryReferences* references);
 
 #endif  // REPLACE_ALGOS_H_

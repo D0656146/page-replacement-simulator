@@ -9,18 +9,23 @@ typedef struct {
     int length;
 } MemoryReferences;
 
-MemoryReferences* NewMemoryReferences(int length, double modify_rate);
+MemoryReferences* NewMemoryReferences(const int length, const double modify_rate);
 void FreeMemoryReferences(MemoryReferences* reference);
-void PrintMemoryReferences(MemoryReferences* reference);
+void PrintMemoryReferences(const MemoryReferences* reference);
 
 void RandomMemoryReferences_RP(MemoryReferences* reference,
-                               int num_all_page,
-                               int longest_period);
+                               const int num_all_page,
+                               const int shortest_period,
+                               const int longest_period);
 
 void LocalityMemoryReferences_RP(MemoryReferences* reference,
-                                 int num_all_page,
-                                 int function_length,
-                                 int shortest_period,
-                                 int longest_period);
+                                 const int num_all_page,
+                                 const int function_length,
+                                 const int shortest_period,
+                                 const int longest_period);
+
+void ParetoMemoryReferences_RP(MemoryReferences* reference,
+                               const int num_all_page,
+                               const double shape_value);
 
 #endif  // REPLACE_UTILS_H_

@@ -1,7 +1,7 @@
 #include "simulator.h"
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 SimulateResult* NewSimulateResult() {
     SimulateResult* instance = malloc(sizeof(SimulateResult));
@@ -15,10 +15,11 @@ void FreeSimulateResult(SimulateResult* result) {
     free(result);
 }
 
-void PrintSimulateResult(SimulateResult* result){
+void PrintSimulateResult(const SimulateResult* result) {
     printf("page faults: %d\n", result->num_page_fault);
     printf("disk writes: %d\n", result->num_disk_write);
     printf("interrupts: %d\n", result->num_extra_interrupt);
+    printf("costs: %d\n", result->num_page_fault + result->num_disk_write);
 }
 
 PRSimulator* NewPRSimulator(int memory_size) {
@@ -28,7 +29,7 @@ PRSimulator* NewPRSimulator(int memory_size) {
     instance->dirty_bit_ar = calloc(memory_size, sizeof(bool));
     instance->memory_ar = malloc(memory_size * sizeof(int));
     for (int c = 0; c < memory_size; c++) {
-            instance->memory_ar[c] = EMPTY_PAGE;
+        instance->memory_ar[c] = EMPTY_PAGE;
     }
     return instance;
 }
@@ -40,7 +41,7 @@ void FreePRSimulator(PRSimulator* simulator) {
     free(simulator);
 };
 
-int FindPage(PRSimulator* self, int page) {
+int FindPage(const PRSimulator* self, const int page) {
     for (int c = 0; c < self->memory_size; c++) {
         if (self->memory_ar[c] == page) {
             return c;

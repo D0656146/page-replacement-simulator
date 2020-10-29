@@ -5,8 +5,12 @@
             "name": "Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}\\..\\dist\\${fileBasenameNoExtension}.exe",
-            "args": [],
+            "program": "${fileDirname}\\..\\dist\\os_hw.exe",
+            "args": [
+                "pareto",
+                "arb",
+                "20"
+            ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}\\..",
             "environment": [],

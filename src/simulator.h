@@ -11,7 +11,7 @@ typedef struct {
 
 SimulateResult* NewSimulateResult();
 void FreeSimulateResult(SimulateResult* result);
-void PrintSimulateResult(SimulateResult* result);
+void PrintSimulateResult(const SimulateResult* result);
 
 #define EMPTY_PAGE (-1)
 typedef struct {
@@ -25,6 +25,6 @@ PRSimulator* NewPRSimulator(int memory_size);
 void FreePRSimulator(PRSimulator* simulator);
 
 #define PAGE_NOT_FOUND (-1)
-int FindPage(PRSimulator* self, int page);
+int FindPage(const PRSimulator* self, const int page);
 
 #endif  // SIMULATOR_H_
