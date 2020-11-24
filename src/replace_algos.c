@@ -56,6 +56,7 @@ SimulateResult* AdditionalReferenceBits_MA(PRSimulator* simulator,
                 // count reference value
                 reference_value[c_mem] /= 2;
                 reference_value[c_mem] += simulator->reference_bit_ar[c_mem] * pow(2, num_arbits - 1);
+                simulator->reference_bit_ar[c_mem] = false;
             }
             // printf("[arb] interrupt \n");
         }
@@ -69,6 +70,7 @@ SimulateResult* AdditionalReferenceBits_MA(PRSimulator* simulator,
                     page_location = (c_q + queue_tail) % simulator->memory_size;
                 }
             }
+            reference_value[page_location] = 0;
             queue_tail = page_location;
             result->num_page_fault++;
             if (simulator->dirty_bit_ar[queue_tail]) {
