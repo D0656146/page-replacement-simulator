@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${fileDirname}\\..\\dist\\os_hw.exe",
             "args": [
-                "pareto",
+                "random",
                 "arb",
                 "20"
             ],

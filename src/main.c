@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     const int num_frames = atoi(argv[3]);
 
     const int references_size = 200000;
-    const double modify_rate = 0.2;
+    const double modify_rate = 0.3;
     const int num_pages = 800;
     const int random_shortest_period = 1;
     const int random_longest_period = 25;
@@ -24,8 +24,8 @@ int main(int argc, char** argv) {
     const int locality_longest_period = 53;
     const double pareto_shape_value = log(5) / log(4);
     const int num_arbits = 8;
-    const int interrupt_period = 100;
-    const int runs = 30;
+    const int interrupt_period = 10;
+    const int runs = 10;
 
     SimulateResult* average = NewSimulateResult();
     for (int c = 0; c < runs; c++) {
@@ -68,26 +68,26 @@ int main(int argc, char** argv) {
     printf("references method: %s\n", references_method);
     printf("algorithm: %s\n", algorithm);
     printf("number of frames: %d\n", num_frames);
-    PrintSimulateResult(result);
+    PrintSimulateResult(average);
 
     char filename[100];
     FILE* fptr;
 
-    sprintf(filename, "%s_%s_pf.dat", references_method, algorithm);
+    sprintf(filename, "data-plot/%s_%s_pf.dat", references_method, algorithm);
     while (!(fptr = fopen(filename, "a+"))) {
         fopen(filename, "w");
     }
     fprintf(fptr, "%d %d\n", num_frames, average->num_page_fault);
     fclose(fptr);
 
-    sprintf(filename, "%s_%s_int.dat", references_method, algorithm);
+    sprintf(filename, "data-plot/%s_%s_int.dat", references_method, algorithm);
     while (!(fptr = fopen(filename, "a+"))) {
         fopen(filename, "w");
     }
     fprintf(fptr, "%d %d\n", num_frames, average->num_extra_interrupt);
     fclose(fptr);
 
-    sprintf(filename, "%s_%s_dw.dat", references_method, algorithm);
+    sprintf(filename, "data-plot/%s_%s_dw.dat", references_method, algorithm);
     while (!(fptr = fopen(filename, "a+"))) {
         fopen(filename, "w");
     }
